@@ -1,9 +1,9 @@
-import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "./constants.js"
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "./constants.js";
 
 export function getSpotifyAccessToken() {
-  const encodedToken = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString(
-    "base64"
-  )
+  const encodedToken = Buffer.from(
+    `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64");
 
   return fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -16,12 +16,12 @@ export function getSpotifyAccessToken() {
     }),
   })
     .then((res) => res.json())
-    .then((data) => data.access_token)
+    .then((data) => data.access_token);
 }
 
 export function searchSong(accessToken, songTitle, artistName) {
   return fetch(
-    `https://api.spotify.com/v1/search?q=track:${songTitle}+artist=${artistName}&type=track`,
+    `https://api.spotify.com/v1/search?q=track:${songTitle}+artist:${artistName}&type=track&limit=1`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -30,16 +30,19 @@ export function searchSong(accessToken, songTitle, artistName) {
     }
   )
     .then((res) => res.json())
-    .then((data) => data.tracks.items?.[0] || null)
+    .then((data) => data.tracks.items?.[0] || null);
 }
 
-export function getRecommendedSongsFromSpotify(accessToken, songId) {
-  return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${songId}`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  })
+export function getRecommendedSongsFromSpotify(accessToken, songIds) {
+  return fetch(
+    `https://api.spotify.com/v1/recommendations?seed_tracks=${songIds}&limit=5`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  )
     .then((res) => res.json())
-    .then((data) => data.tracks)
+    .then((data) => data.tracks);
 }

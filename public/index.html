@@ -7,23 +7,71 @@
     <title>Spotify Song Recommender</title>
     <script src="./script.js" type="text/javascript" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body class="p-8" onload="main()">
     <form class="flex flex-col space-y-4" onsubmit="submitForm(event)">
+      <span class="bg-gray-100 px-2 py-1">Song 01</span>
       <input
         class="border px-4 py-2 rounded-md w-full"
         placeholder="Song Name"
-        name="songTitle"
-        type="text" />
+        name="songTitle1"
+        type="text"
+        required
+      />
       <input
         class="border px-4 py-2 rounded-md w-full"
         placeholder="Artist Name"
-        name="artistName"
-        type="text" />
-      <button class="bg-green-500 p-4 rounded-md text-white">Get Recommended Songs</button>
+        name="artistName1"
+        type="text"
+        required
+      />
+
+      <span class="bg-gray-100 px-2 py-1">Song 02</span>
+      <input
+        class="border px-4 py-2 rounded-md w-full"
+        placeholder="Song Name"
+        name="songTitle2"
+        type="text"
+      />
+      <input
+        class="border px-4 py-2 rounded-md w-full"
+        placeholder="Artist Name"
+        name="artistName2"
+        type="text"
+      />
+
+      <span class="bg-gray-100 px-2 py-1">Song 03</span>
+      <input
+        class="border px-4 py-2 rounded-md w-full"
+        placeholder="Song Name"
+        name="songTitle3"
+        type="text"
+      />
+      <input
+        class="border px-4 py-2 rounded-md w-full"
+        placeholder="Artist Name"
+        name="artistName3"
+        type="text"
+      />
+
+      <button
+        class="bg-green-500 p-4 rounded-md text-white"
+        href="#recommended-songs-list"
+      >
+        Get Recommended Songs
+      </button>
     </form>
 
-    <span class="inline-block text-2xl font-bold mb-2 mt-12">Spotify Recommended Songs</span>
-    <ul id="recommended-songs-list" class="flex flex-col space-y-2"></ul>
+    <div id="songs-container">
+      <span class="inline-block text-2xl font-bold mb-6 mt-12"
+        >Spotify Recommended Songs</span
+      >
+      <div id="recommended-songs-list" class="flex flex-col space-y-2"></div>
+    </div>
   </body>
 </html>
