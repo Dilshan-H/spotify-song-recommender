@@ -2,8 +2,10 @@
 
 Recommend songs based on your preferred tracks, artists using Spotify API
 
-API 103: A boon for developers building applications
+📚 API 103: A boon for developers building applications
 Video Link - https://youtu.be/YRVmXdWZbJM
+
+🚀 See the live demo here: https://spotify-song-recommender.up.railway.app/
 
 ## About
 
@@ -45,7 +47,7 @@ SPOTIFY_CLIENT_SECRET=<your_client_secret>
 ```
 
 4. Deploy the project on Railway.
-5. Open the browser and go to the URL: https://your-project-name.railway.app
+5. Open the browser and go to the URL: https://your-project-name.up.railway.app
 
 ## References
 
